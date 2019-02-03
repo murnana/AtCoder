@@ -8,7 +8,8 @@
  * 
  */
 
-#include<iostream>
+#include <iostream>
+#include <iomanip>
 using namespace std;
 
 /**
@@ -24,6 +25,9 @@ int main()
     cin >> T >> X;
 
     // 世界Aでは何時間進んでいるか出力する
+    // https://marycore.jp/prog/cpp/stream-format-float/ より
+    // 標準出力の精度を変えないと、正しい答えにならない
+    cout << setprecision(11);
     cout << (T/X) << endl;
     return 0;
 }
