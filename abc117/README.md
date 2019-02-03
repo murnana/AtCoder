@@ -1,6 +1,6 @@
 # AtCoder Beginner Contest 117
 
-会場: https://atcoder.jp/contests/abc117
+会場: https://atcoder.jp/contests/abc117  
 公式解説放送: https://youtu.be/OOtz0Lx_mRk
 
 自分の提出: https://atcoder.jp/contests/abc117/submissions?f.User=murnana
@@ -10,12 +10,13 @@
 
 |                    |      |
 | -----------------: | :--- |
-|               順位 | -    |
-|             Rating | -    |
-|       Rating最高値 | -    |
-| コンテスト参加回数 | -    |
+|               順位 | 13509th  |
+|             Rating | 203 (暫定)   |
+|       Rating最高値 | 212  |
+| コンテスト参加回数 | 13  |
 
-
+![ratingStatus](./ratingStatus.png)
+![ratingGraph](./ratingGraph.png)
 
 
 ## 解けなかった問題の解説メモ
