@@ -2,12 +2,14 @@
  * @file A-Entrance-Examination.cpp
  * @author murnana
  * @brief A - Entrance Examination https://atcoder.jp/contests/abc117/tasks/abc117_a
+ *      https://atcoder.jp/contests/abc117/submissions/4158851
  * @date 2019-02-03
  * 
  * @copyright Copyright (c) 2019
  * 
  */
 
+#include <ios>
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -27,7 +29,8 @@ int main()
     // 世界Aでは何時間進んでいるか出力する
     // https://marycore.jp/prog/cpp/stream-format-float/ より
     // 標準出力の精度を変えないと、正しい答えにならない
-    cout << setprecision(11);
+    cout << setprecision(10);
+    cout << fixed;
     cout << (T/X) << endl;
     return 0;
 }
