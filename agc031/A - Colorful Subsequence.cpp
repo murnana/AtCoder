@@ -26,27 +26,30 @@ int main()
     {
         char s;
         cin >> s;
-        cerr << "----------------------" << endl;
         cerr << "s = " << s << endl;
         if (S.size() > 0)
         {
             if (S.back() == s)
                 continue;
         }
-        cerr << "add \"" << s << "\" for S" << endl;
         S.push_back(s);
         ++count;
     }
+    cerr << "----------------------" << endl;
 
-    auto create = [](unsigned int count) {
-        unsigned int ans = 1;
-        for (unsigned int i = 2; i < count; ++i)
+    auto echelon = [](const unsigned int &count) {
+        unsigned int ans = count;
+        unsigned int cnt = ans;
+        cerr << count << ": " << ans;
+        while (--cnt)
         {
-            ans += i;
+            ans += cnt;
+            cerr << " + " << cnt;
         }
+        cerr << " = " << ans << endl;
         return ans;
     };
 
-    cout << create(count) << endl;
+    cout << echelon(count - 1) + echelon(count) << endl;
     return 0;
 }
