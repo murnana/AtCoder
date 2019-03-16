@@ -1,7 +1,6 @@
 /**
- * @file A.cpp
+ * @file A - Colorful Subsequence.cpp
  * @author murnana
- * @brief 
  * 
  * @copyright Copyright (c) 2019
  * 
