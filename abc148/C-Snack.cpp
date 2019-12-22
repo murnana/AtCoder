@@ -1,5 +1,40 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
+
+/**
+ * @brief ユークリッドの互除法による、
+ *        最大公約数を求める
+ * 
+ * @param m 
+ * @param n 
+ * @return long 
+ */
+template <typename T>
+T Gcd(T m, T n)
+{
+    T temp;
+    while (m % n != 0)
+    {
+        temp = n;
+        n = m % n;
+        m = temp;
+    }
+    return n;
+}
+
+/**
+ * @brief 最小公倍数を求める
+ * 
+ * @tparam T 
+ * @param m 
+ * @param n 
+ * @return T 
+ */
+template <typename T>
+T Lcm(T m, T n)
+{
+    return m * n / Gcd<T>(m, n);
+}
 
 /**
  * @brief プログラムのエントリーポイントです
@@ -8,16 +43,11 @@ using namespace std;
  */
 int main()
 {
-    // 整数の入力
-    int a;
-    cin >> a;
-    // スペース区切りの整数の入力
-    int b,c;
-    cin >> b >> c;
-    // 文字列の入力
-    string s;
-    cin >> s;
+    // 入力
+    long A, B;
+    cin >> A >> B;
+
     // 出力
-    cout << (a+b+c) << " " << s << endl;
+    cout << Lcm<long>(A, B) << endl;
     return 0;
 }
