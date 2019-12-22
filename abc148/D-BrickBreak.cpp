@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 /**
@@ -8,16 +8,45 @@ using namespace std;
  */
 int main()
 {
-    // 整数の入力
-    int a;
-    cin >> a;
-    // スペース区切りの整数の入力
-    int b,c;
-    cin >> b >> c;
-    // 文字列の入力
-    string s;
-    cin >> s;
+    // 入力
+    int N;
+    cin >> N;
+
+    int *A = new int[N];
+    for (int i = 0; i < N; ++i)
+    {
+        cin >> A[i];
+    }
+
+    // すぬけさんが満足するには、
+    // レンガが左から 1, 2, 3…と並ぶようにしなければならない
+    // つまり、最初の「1」を見つける必要がある
+    // その後、2, 3 … と連番が見つかるまで、レンガを砕き続ける必要がある
+    int breakCount = 0;
+    int checkNumber = 1;
+    for (int i = 0; i < N; ++i)
+    {
+        if (A[i] == checkNumber)
+        {
+            ++checkNumber;
+        }
+        else
+        {
+            ++breakCount;
+        }
+    }
+
     // 出力
-    cout << (a+b+c) << " " << s << endl;
+    if (checkNumber > 1)
+    {
+        cout << breakCount << endl;
+    }
+    else
+    {
+        cout << "-1" << endl;
+    }
+
+    delete[] A;
+
     return 0;
 }
