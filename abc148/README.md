@@ -1,4 +1,4 @@
-# AtCoder Grand Contest 031
+# AtCoder Beginner Contest 148
 
 会場: https://atcoder.jp/contests/abc148  
 公式解説放送: https://www.youtube.com/watch?v=F2p_e6iKxnk&feature=youtu.be
