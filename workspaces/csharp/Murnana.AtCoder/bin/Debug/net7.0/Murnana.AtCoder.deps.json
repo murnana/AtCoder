@@ -1,0 +1,89 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Murnana.AtCoder/1.0.0": {
+        "dependencies": {
+          "SourceExpander": "8.2.0",
+          "ac-library-csharp": "3.9.2"
+        },
+        "runtime": {
+          "Murnana.AtCoder.dll": {}
+        }
+      },
+      "ac-library-csharp/3.9.2": {
+        "runtime": {
+          "lib/net7.0/ac-library-csharp.dll": {
+            "assemblyVersion": "3.9.2.101",
+            "fileVersion": "3.9.2.101"
+          }
+        }
+      },
+      "SourceExpander/8.2.0": {
+        "dependencies": {
+          "SourceExpander.Core": "8.2.0",
+          "SourceExpander.Generator": "8.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SourceExpander.dll": {
+            "assemblyVersion": "8.2.0.100",
+            "fileVersion": "8.2.0.100"
+          }
+        },
+        "resources": {
+          "lib/netstandard2.0/ja-JP/SourceExpander.resources.dll": {
+            "locale": "ja-JP"
+          }
+        }
+      },
+      "SourceExpander.Core/8.2.0": {
+        "runtime": {
+          "lib/netcoreapp3.1/SourceExpander.Core.dll": {
+            "assemblyVersion": "8.2.0.100",
+            "fileVersion": "8.2.0.100"
+          }
+        }
+      },
+      "SourceExpander.Generator/8.2.0": {}
+    }
+  },
+  "libraries": {
+    "Murnana.AtCoder/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ac-library-csharp/3.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fpLbvRsQvu+eUOxpLgiuqHXE89W6xmQRom2dvNsw4v90GY+VO55E0/njyF9QS0PQzw11D2xJTpronWMTl43/xQ==",
+      "path": "ac-library-csharp/3.9.2",
+      "hashPath": "ac-library-csharp.3.9.2.nupkg.sha512"
+    },
+    "SourceExpander/8.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oVxdk0AyPJq79ynA2ymkpu9uCjJf6iUbIFLFHhXYQRZ8IVf2cmBHFVWCopA2YGMB3KFcSgJ8b/uQdoNWnK1oQg==",
+      "path": "sourceexpander/8.2.0",
+      "hashPath": "sourceexpander.8.2.0.nupkg.sha512"
+    },
+    "SourceExpander.Core/8.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ETSmoKzOaNASSULtrwj9rqTzqEaOA4/h9bZSjeergE6A6vpCYfH+fMdkZHcLoZBcpNM7vrTayGmUmpejbmRarA==",
+      "path": "sourceexpander.core/8.2.0",
+      "hashPath": "sourceexpander.core.8.2.0.nupkg.sha512"
+    },
+    "SourceExpander.Generator/8.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FUcCMMrnVc7omywzp4jj+FxZkkxJBN5KB2+GSUdGfT5WAHsoBwCmkiRyg3ONidPNMvKW1DbSTwao4HNKNB4mWg==",
+      "path": "sourceexpander.generator/8.2.0",
+      "hashPath": "sourceexpander.generator.8.2.0.nupkg.sha512"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "kpn1zXWEGMo=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\anzuy\\Projects\\AtCoder\\workspaces\\csharp\\Murnana.AtCoder\\Murnana.AtCoder.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\anzuy\\.nuget\\packages\\ac-library-csharp\\3.9.2\\ac-library-csharp.3.9.2.nupkg.sha512",
+    "C:\\Users\\anzuy\\.nuget\\packages\\sourceexpander\\8.2.0\\sourceexpander.8.2.0.nupkg.sha512",
+    "C:\\Users\\anzuy\\.nuget\\packages\\sourceexpander.core\\8.2.0\\sourceexpander.core.8.2.0.nupkg.sha512",
+    "C:\\Users\\anzuy\\.nuget\\packages\\sourceexpander.generator\\8.2.0\\sourceexpander.generator.8.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}

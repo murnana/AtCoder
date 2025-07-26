@@ -1,5 +1,9 @@
 {
     "files.associations": {
         "iostream": "cpp"
-    }
+    },
+    "github.copilot.enable": {
+        "*": false
+    },
+    "github.copilot.inlineSuggest.enable": false
 }
