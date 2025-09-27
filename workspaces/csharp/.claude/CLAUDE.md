@@ -88,3 +88,37 @@ Target language environment:
 - Combined.csx is auto-generated, do not edit manually
 - Program.cs contains main solution code that gets expanded to Combined.csx for submission
 - AI usage is prohibited during contest participation, so warn if branch is `feature/abcXXX`, `feature/arcXXX`, `feature/agcXXX`, `feature/ahcXXX`
+
+## AtCoder Problem Explanation Rules
+
+When providing explanations for AtCoder problems, follow these guidelines:
+
+### 1. **AI Assistance Attribution**
+Always include in the header:
+```csharp
+/// 🤖 本プログラムはClaude Code (claude.ai/code) の支援により作成されました
+```
+
+### 2. **Official Editorial Reference**
+When official editorial is available, include:
+```csharp
+/// 📚 AtCoder公式解説 (editorial URL) に基づく実装
+```
+
+### 3. **Detailed Japanese Comments**
+Include comprehensive explanations covering:
+- 問題概要 (Problem Overview)
+- 解法のポイント (Key Solution Points)
+- 計算量 (Time/Space Complexity)
+- 実装の利点 (Implementation Benefits)
+- 各処理ステップの詳細説明 (Detailed Step-by-Step Explanation)
+
+### 4. **Official Editorial Priority**
+- Prioritize official editorial approaches when available
+- Fetch and analyze official editorial before implementation
+- Base implementation on official solutions
+
+### 5. **Educational Value Focus**
+- Explain why the solution is efficient
+- Describe typical techniques (e.g., array doubling)
+- Mention applicability to similar problems

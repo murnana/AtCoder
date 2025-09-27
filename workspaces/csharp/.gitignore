@@ -58,10 +58,67 @@ TestResult.xml
 nunit-*.xml
 
 ###############################################################################
+# JetBrains Rider
+###############################################################################
+# JetBrains Rider - User-specific files (based on official JetBrains.gitignore)
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Sensitive files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# File-based project format
+*.iws
+
+# IntelliJ
+out/
+
+# Plugin-specific files
+.idea/sonarlint/
+atlassian-ide-plugin.xml
+
+# Cursive Clojure plugin
+.idea/replstate.xml
+
+# SonarLint plugin
+.idea/sonarlint/
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Editor-based Rest Client
+.idea/httpRequests
+
+# Android studio 3.1+ serialized cache file
+.idea/caches/build_file_checksums.ser
+
+###############################################################################
+# Claude Code
+###############################################################################
+# Personal settings - not shared with team
+.claude/settings.local.json
+.claude/CLAUDE.local.md
+
+# Personal commands (if any)
+.claude/commands/local/
+
+###############################################################################
 # Others
-################################################################################
+###############################################################################
 # Auto-generated files
 *.csx
-
-# Ignore Jetbrains IDE Settings
-/.idea/
