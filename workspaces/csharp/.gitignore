@@ -66,6 +66,7 @@ nunit-*.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+*.DotSettings.user
 
 # Sensitive files
 .idea/**/dataSources/
