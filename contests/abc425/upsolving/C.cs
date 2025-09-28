@@ -1,4 +1,4 @@
-﻿using SourceExpander;
+using SourceExpander;
 
 /// <summary>
 /// ABC425-C: Rotate and Sum Query

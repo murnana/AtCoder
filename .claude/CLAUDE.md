@@ -23,6 +23,7 @@ AtCoder competitive programming solutions and contest history in multiple langua
 - Reference for studying past solutions
 - C++ solutions are standalone files
 - No standardized build system
+- **`upsolving/`**: Post-contest review and practice solutions within each contest folder
 
 ### Workspaces (`workspaces/`)
 - Language/environment-specific directories
