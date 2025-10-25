@@ -62,3 +62,5 @@ _deps
 
 # Claude Code
 /.claude/settings.local.json
+/workspaces/ai/claude/*
+!/workspaces/ai/claude/.gitignore

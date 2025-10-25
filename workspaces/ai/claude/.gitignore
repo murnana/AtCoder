@@ -1,0 +1,8 @@
+# Claude Code working directory
+# All files in this directory are ignored except this .gitignore
+
+# Ignore everything
+*
+
+# Except this file
+!.gitignore

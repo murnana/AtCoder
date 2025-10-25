@@ -1,9 +1,15 @@
 {
   "includeCoAuthoredBy": true,
   "permissions": {
-    "defaultMode": "default",
+    "allow": [
+      "WebFetch(domain:atcoder.jp)"
+    ],
+    "ask": [],
+    "deny": [],
+    "defaultMode": "plan",
     "disableBypassPermissionsMode": "disable"
   },
   "disableAllHooks": true,
+  "outputStyle": "Learning",
   "enableAllProjectMcpServers": false
 }
