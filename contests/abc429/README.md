@@ -51,6 +51,13 @@ https://atcoder.jp/contests/abc429/tasks/abc429_c
 - 時間内に最適化できず未提出
 - `C-unsubmitted.cs`: 解きかけのコード
 
+**Upsolving (2025-10-26):**
+- 公式解説を参考に組み合わせ論によるO(N)解法を実装
+- 各値xの出現回数B_xから、C(B_x, 2) × (N - B_x) で3つ組を計算
+- 詳細なインライン解説を追加し、数式の意味を具体例で説明
+- AC達成: https://atcoder.jp/contests/abc429/submissions/70486173
+- `upsolving/C.cs`: 復習後の解法（詳細コメント付き）
+
 
 ### D問題以降
 
