@@ -127,6 +127,15 @@ Include comprehensive explanations in **Japanese** covering:
 - Mention applicability to similar problems
 - Focus on memorable patterns and techniques
 
+### 6. **TODO: Inline Detailed Explanations**
+- Add inline comments within the implementation code that explain the solution step-by-step
+- Use visual separators (e.g., `// ━━━━━`) to divide code into logical sections
+- Include concrete examples with actual values to illustrate abstract formulas
+- Explain mathematical formulas both algebraically and in plain language
+- Use section headers like `// 【解法の核心】`, `// 【組み合わせの分解】` for key concepts
+- Balance detailed explanations with code readability
+- Make the code self-documenting so it can be understood without external references
+
 ## Development Commands
 
 ### Build and Run
@@ -165,9 +174,9 @@ dotnet publish -c Release -o publish -v q --nologo --tl:off
 
 ## Problem-Solving Approach
 
-### Standard Workflow (Collaboration with atcoder-problem-analyzer)
+### Standard Workflow (Collaboration with atcoder-question-analyzer)
 
-**Prerequisites:** Verify that `atcoder-problem-analyzer` agent has output 3 files to `workspaces/ai/claude/`:
+**Prerequisites:** Verify that `atcoder-question-analyzer` agent has output 3 files to `workspaces/ai/claude/`:
 1. `problem-statement.md` - Problem statement and constraints
 2. `problem-statement-testcases.md` - Test cases
 3. `problem-statement-explanation.md` - Solution explanation
@@ -201,7 +210,7 @@ dotnet publish -c Release -o publish -v q --nologo --tl:off
 ### When Analysis Files Don't Exist
 
 If analysis files are not present in `workspaces/ai/claude/`:
-1. Suggest user run `atcoder-problem-analyzer` agent first
+1. Suggest user run `atcoder-question-analyzer` agent first
 2. Or, if problem statement is directly provided, analyze independently and implement
 
 ### Language Policy Reminder

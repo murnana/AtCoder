@@ -313,7 +313,7 @@ When generating README, reference existing contest READMEs for format consistenc
 ❌ **No implementation**: This agent does not write or modify solution code
 
 These tasks are handled by other specialized agents:
-- Problem analysis: `atcoder-problem-analyzer`
+- Problem analysis: `atcoder-question-analyzer`
 - C# implementation: `csharp-problem-solver`
 
 ### Scope Limitation
