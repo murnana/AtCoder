@@ -32,13 +32,17 @@ AtCoder competitive programming solutions and contest history in multiple langua
 
 ### Documentation (`docs/`)
 - `docs/ai/claude/`: AI workflow documentation
-  - `subagent-communication.md`: How agents collaborate via shared files
+  - `agents/`: Detailed documentation for each specialized agent
+    - [atcoder-question-analyzer](docs/ai/claude/agents/atcoder-question-analyzer-agent.md): Problem analysis
+    - [csharp-problem-solver](docs/ai/claude/agents/csharp-problem-solver-agent.md): C# implementation
+    - [csharp-upsolving-archiver](docs/ai/claude/agents/csharp-upsolving-archiver-agent.md): Upsolving archival
+    - [contest-summarizer](docs/ai/claude/agents/contest-summarizer-agent.md): Contest summary
 
 ## Specialized Agents
 
 This repository uses specialized Claude Code agents for efficient problem-solving workflows:
 
-### 1. `atcoder-problem-analyzer`
+### 1. `atcoder-question-analyzer`
 **Purpose**: Analyze AtCoder problems and create structured analysis files
 
 **When to use:**
@@ -51,11 +55,18 @@ This repository uses specialized Claude Code agents for efficient problem-solvin
 - `problem-statement-testcases.md` - Sample test cases
 - `problem-statement-explanation.md` - Solution approach and algorithm recommendations
 
+**Editorial fetching**:
+- Automatically attempts to fetch official editorials from AtCoder
+- If automatic fetch fails, will ask you for the editorial URL
+- Can proceed without editorial if unavailable
+
 **Example usage:**
 ```
 "Analyze ABC350 problem C"
 "Get the official editorial for this problem"
 ```
+
+**See also**: [Detailed documentation](docs/ai/claude/agents/atcoder-question-analyzer-agent.md)
 
 ### 2. `csharp-problem-solver`
 **Purpose**: Implement C# solutions based on problem analysis
@@ -65,7 +76,13 @@ This repository uses specialized Claude Code agents for efficient problem-solvin
 - To implement solutions in `workspaces/csharp/Murnana.AtCoder/Program.cs`
 - For debugging and optimizing C# solutions
 
-**Prerequisites**: Analysis files from `atcoder-problem-analyzer` should exist in `workspaces/ai/claude/`
+**Prerequisites**: Analysis files from `atcoder-question-analyzer` should exist in `workspaces/ai/claude/`
+
+**Key features**:
+- Implements with detailed Japanese comments and XML documentation
+- Automatically tests with sample cases
+- Follows AtCoder C# environment (.NET 9.0.8 AOT)
+- Uses SourceExpander for single-file submission
 
 **Example usage:**
 ```
@@ -73,16 +90,58 @@ This repository uses specialized Claude Code agents for efficient problem-solvin
 "Debug the current solution in Program.cs"
 ```
 
+**See also**: [Detailed documentation](docs/ai/claude/agents/csharp-problem-solver-agent.md)
+
+### 3. `csharp-upsolving-archiver`
+**Purpose**: Archive completed upsolving solutions to contest directory
+
+**When to use:**
+- After finishing upsolving (post-contest problem solving)
+- When you have a completed solution in `Program.cs` ready to archive
+- To move solutions from workspace to permanent storage
+
+**Output**: Archives solution to `contests/{contest_id}/upsolving/{Problem}.cs`
+
+**Example usage:**
+```
+"ABC429のC問題のupsolvingが終わりました"
+"Program.csの解答をcontestsディレクトリに移動して"
+```
+
+**See also**: [Detailed documentation](docs/ai/claude/agents/csharp-upsolving-archiver-agent.md)
+
+### 4. `contest-summarizer`
+**Purpose**: Organize contest results and create README after contest completion
+
+**When to use:**
+- After finishing an AtCoder contest
+- To organize solutions from workspace to contest directory
+- To create/update README with contest performance
+
+**Output**:
+- Copies AC solutions to `contests/{contest_id}/`
+- Creates/updates `contests/{contest_id}/README.md`
+- Fetches problem titles from AtCoder
+
+**Example usage:**
+```
+"ABC430のコンテストサマリーを作成して"
+"ABC429の成果を整理して"
+```
+
+**See also**: [Detailed documentation](docs/ai/claude/agents/contest-summarizer-agent.md)
+
 ### Agent Workflow (Recommended)
 
-**Two-stage approach** for optimal efficiency:
+**Full workflow** covering analysis, implementation, and archival:
 
 ```
 Stage 1: Problem Analysis
-  User → atcoder-problem-analyzer
+  User → atcoder-question-analyzer
        ↓
   Fetches problem from AtCoder
   Analyzes constraints & algorithms
+  Fetches official editorial (with fallback)
        ↓
   Outputs 3 files to workspaces/ai/claude/
 
@@ -93,13 +152,28 @@ Stage 2: Implementation
   Implements in Program.cs (Japanese comments)
        ↓
   Tests and debugs solution
+
+Stage 3: Upsolving Archive (optional)
+  User → csharp-upsolving-archiver
+       ↓
+  Moves completed solution to contests/{contest_id}/upsolving/
+  Preserves workspace for next problem
+
+Stage 4: Contest Summary (after contest)
+  User → contest-summarizer
+       ↓
+  Organizes all AC solutions
+  Creates README with performance data
+  Fetches problem titles from AtCoder
 ```
 
 **Why this approach?**
-- ✅ Separation of concerns (analysis vs implementation)
+- ✅ Separation of concerns (analysis vs implementation vs archival)
 - ✅ Analysis files reusable across multiple languages
 - ✅ Token efficiency through hybrid language approach
 - ✅ Better debugging (can review analysis separately)
+- ✅ Clean workspace management (upsolving archival)
+- ✅ Consistent contest records (automated README creation)
 
 ## Workflow
 ### Branches
@@ -109,7 +183,7 @@ Stage 2: Implementation
 ### Development Flow
 
 #### Using Specialized Agents (Recommended)
-1. **Problem Analysis**: Use `atcoder-problem-analyzer` to analyze the problem
+1. **Problem Analysis**: Use `atcoder-question-analyzer` to analyze the problem
    - Fetches problem statement and official editorial
    - Performs constraint analysis
    - Recommends algorithms and approach
@@ -138,5 +212,3 @@ To optimize Claude's token usage while maintaining quality:
 | Technical descriptions (algorithms, complexity) | English | 30-40% token reduction |
 | C# code comments & XML docs | Japanese | Human readability for developers |
 | Analysis file headers | English | Structural elements |
-
-**See**: `docs/ai/claude/subagent-communication.md` for detailed documentation

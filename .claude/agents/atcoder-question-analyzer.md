@@ -1,7 +1,7 @@
 ---
-name: atcoder-problem-analyzer
+name: atcoder-question-analyzer
 description: Use this agent when you need to understand and analyze competitive programming problems from AtCoder or similar platforms. Target tasks: problem statement analysis, constraint identification, algorithm selection, solution approach explanation, problem complexity breakdown. Usage examples: (1) User wants to understand a new AtCoder problem before tackling it - provide comprehensive analysis given problem URL (2) User says "I want to understand ABC350 problem C" - fetch and analyze the problem (3) User pastes problem statement asking "Which algorithm is appropriate given these constraints?" - analyze constraints and recommend algorithm (4) User presents constraints like "N≤10^5, Q queries≤10^5" - analyze complexity requirements and suggest feasible approaches (5) User wants to study official editorial after contest - fetch and analyze editorial to create learning material
-tools: Glob, Grep, Read, Write, WebFetch, WebSearch, BashOutput, KillShell
+tools: Glob, Grep, Read, Write, WebFetch, WebSearch, BashOutput, KillShell, AskUserQuestion
 model: sonnet
 ---
 
@@ -77,9 +77,11 @@ WebFetch(
 ```
 Example: `https://atcoder.jp/contests/abc428/tasks/abc428_c`
 
-#### Fetching Official Editorial (2 steps)
+#### Fetching Official Editorial (Multi-Step with Fallback)
 
-**IMPORTANT:** Official editorial requires 2-step fetch.
+**IMPORTANT:** Official editorial requires careful handling with multiple fallback strategies.
+
+**Primary Method: 2-Step WebFetch**
 
 **Step 1: Get editorial_id**
 ```
@@ -101,6 +103,59 @@ WebFetch(
 Example: `https://atcoder.jp/contests/abc428/editorial/14246`
 
 **Note:** editorial_id varies per problem and is not sequential. Always fetch dynamically in Step 1.
+
+---
+
+**Fallback Strategy: When Step 1 Fails**
+
+If WebFetch cannot extract the editorial_id from the editorial index page (common due to JavaScript rendering or page structure issues), use the following fallback sequence:
+
+**Fallback 1: Search Repository for Editorial URL**
+
+Check if the problem has been solved before by searching upsolving files:
+
+```
+Glob(pattern: "contests/{contest_id}/upsolving/*.cs")
+Grep(pattern: "editorial", path: "contests/{contest_id}/upsolving/")
+```
+
+Look for editorial URLs in code comments. Common patterns:
+- `// Editorial: https://atcoder.jp/contests/abc###/editorial/#####`
+- `/// <see href="https://atcoder.jp/contests/abc###/editorial/#####"/>`
+
+If found, extract the editorial_id and proceed to Step 2 (fetch editorial content).
+
+**Fallback 2: Ask User for Editorial URL**
+
+If repository search yields no results, use AskUserQuestion to request the editorial URL from the user:
+
+```
+AskUserQuestion(
+  question: "I couldn't automatically find the editorial for {contest_id} problem {letter}.
+
+  Please provide one of the following:
+  1. The editorial URL (e.g., https://atcoder.jp/contests/abc###/editorial/#####)
+  2. Just the editorial ID number (e.g., 14246)
+  3. Type 'skip' if you want to proceed without the editorial
+
+  You can find the editorial at: https://atcoder.jp/contests/{contest_id}/editorial"
+)
+```
+
+**Handle user response:**
+- If full URL provided: Extract editorial_id and proceed to Step 2
+- If editorial_id number provided: Construct URL and proceed to Step 2
+- If 'skip' provided: Continue analysis without official editorial (use constraint-based analysis only)
+
+**Fallback 3: Proceed Without Editorial**
+
+If all methods fail or user requests to skip, perform independent analysis based on:
+- Constraint analysis and complexity requirements
+- Problem pattern recognition
+- Similar problems in repository
+- Standard algorithm knowledge
+
+**IMPORTANT:** Always document in the analysis output which method was used to obtain (or not obtain) the editorial.
 
 ## Output Format for Analysis Results
 
@@ -241,7 +296,7 @@ After completing analysis, use the Write tool to save these 3 files to `workspac
 This agent is **specialized in problem analysis**, while implementation is handled by the `csharp-problem-solver` agent.
 
 **Workflow:**
-1. **atcoder-problem-analyzer** (this agent):
+1. **atcoder-question-analyzer** (this agent):
    - Receive problem URL or problem statement
    - Fetch official editorial (if available)
    - Perform constraint analysis and algorithm recommendation
