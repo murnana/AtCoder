@@ -28,7 +28,12 @@ AtCoder competitive programming solutions and contest history in multiple langua
 
 ### Workspaces (`workspaces/`)
 - Language/environment-specific directories
+- **Multiple C# environments available for different AtCoder environments**
+  - `csharp-dotnet-9-0-8-aot/`: **Current** - C# 13.0 (.NET 9.0.8 AOT) - From Nov 1, 2025 (ABC430)
+  - `csharp-dotnet-7-0-7-aot/`: Legacy - C# 11.0 (.NET 7.0.7 AOT) - Until Oct 31, 2025
+- **⚠️ IMPORTANT**: Check `workspaces/*/README.md` to confirm which environment matches current AtCoder configuration
 - **See `workspaces/XXX/README.md` for details**
+- **Reference**: [AtCoder Language Update Announcement](https://atcoder.jp/posts/1593)
 
 ### Documentation (`docs/`)
 - `docs/ai/claude/`: AI workflow documentation
@@ -73,15 +78,24 @@ This repository uses specialized Claude Code agents for efficient problem-solvin
 
 **When to use:**
 - After problem analysis is complete
-- To implement solutions in `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`
+- To implement solutions in C# workspace `Program.cs`
 - For debugging and optimizing C# solutions
 
 **Prerequisites**: Analysis files from `atcoder-question-analyzer` should exist in `workspaces/ai/claude/`
 
+**⚠️ IMPORTANT - Workspace Selection**:
+- **MUST check workspace README files** to determine correct environment
+- Currently two workspaces exist:
+  - `workspaces/csharp-dotnet-9-0-8-aot/` (Current - From Nov 1, 2025 / ABC430)
+  - `workspaces/csharp-dotnet-7-0-7-aot/` (Legacy - Until Oct 31, 2025)
+- Verify AtCoder environment version before implementation
+- Default to newest environment unless specified otherwise
+- **Reference**: [AtCoder Language Update](https://atcoder.jp/posts/1593)
+
 **Key features**:
 - Implements with detailed Japanese comments and XML documentation
 - Automatically tests with sample cases
-- Follows AtCoder C# environment (.NET 9.0.8 AOT)
+- Follows AtCoder C# environment (verify version in workspace README)
 - Uses SourceExpander for single-file submission
 
 **Example usage:**
@@ -190,15 +204,18 @@ Stage 4: Contest Summary (after contest)
    - Outputs analysis to `workspaces/ai/claude/`
 
 2. **Implementation**: Use `csharp-problem-solver` to implement
+   - **⚠️ Agent will check workspace README files to determine correct environment**
    - Reads analysis files from `workspaces/ai/claude/`
-   - Implements in `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`
+   - Implements in appropriate workspace `Program.cs` (defaults to newest: `csharp-dotnet-9-0-8-aot`)
    - Uses SourceExpander for single-file submission via `Combined.csx`
    - All code comments in Japanese for readability
 
 3. **Reference**: Check `contests/` for past solutions
 
 #### Direct Implementation (Alternative)
-- Directly implement in `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`
+- **Check `workspaces/*/README.md` to select correct environment**
+- Current: `workspaces/csharp-dotnet-9-0-8-aot/Murnana.AtCoder/Program.cs` (.NET 9.0.8 AOT)
+- Legacy: `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs` (.NET 7.0.7 AOT)
 - Use SourceExpander for single-file submission via `Combined.csx`
 
 ## Language Policy

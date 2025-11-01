@@ -2,7 +2,26 @@
 
 ## 概要
 
-`csharp-problem-solver` は、AtCoderの競技プログラミング問題をC#で実装する専門エージェントです。問題分析結果を基に、効率的で正確な解答コードを`workspaces/csharp-dotnet-7-0-7-aot/Program.cs`に実装します。
+`csharp-problem-solver` は、AtCoderの競技プログラミング問題をC#で実装する専門エージェントです。問題分析結果を基に、効率的で正確な解答コードを適切なC#ワークスペースの`Program.cs`に実装します。
+
+## ⚠️ 重要: ワークスペース選択
+
+**実装前に必ず以下を確認してください:**
+
+1. **複数のC#環境が存在します**:
+   - `workspaces/csharp-dotnet-9-0-8-aot/` - **現在推奨** - C# 13.0 (.NET 9.0.8 AOT) - 2025年11月1日（ABC430）から
+   - `workspaces/csharp-dotnet-7-0-7-aot/` - **レガシー** - C# 11.0 (.NET 7.0.7 AOT) - 2025年10月31日まで
+
+2. **各ワークスペースの`README.md`を確認**:
+   - AtCoder環境のバージョン情報を確認
+   - 現在のAtCoder設定と一致するワークスペースを選択
+   - 特に指定がない場合は最新環境（`csharp-dotnet-9-0-8-aot`）を使用
+
+3. **デフォルト動作**:
+   - 明示的な指定がない限り、最新の`csharp-dotnet-9-0-8-aot`を使用
+
+4. **参考リンク**:
+   - [AtCoder言語アップデート告知](https://atcoder.jp/posts/1593)
 
 ## 目的
 
@@ -64,7 +83,7 @@ workspaces/ai/claude/
 
 #### 3. コード実装
 
-`workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`に以下を含む実装:
+選択したワークスペースの`Murnana.AtCoder/Program.cs`（デフォルト: `workspaces/csharp-dotnet-9-0-8-aot/Murnana.AtCoder/Program.cs`）に以下を含む実装:
 
 **XML ドキュメントコメント**:
 ```csharp
