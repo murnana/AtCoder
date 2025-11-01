@@ -33,7 +33,7 @@ Upsolving完了後、以下のように依頼します:
 エージェントは以下を自動的に実行します:
 
 #### 1. **コンテストと問題の識別**
-   - `workspaces/csharp/Murnana.AtCoder/Program.cs` を読み取り
+   - `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs` を読み取り
    - XMLコメントや問題URLからコンテストID (abc429, abc430など) を特定
    - 問題レター (A, B, C, D...) を特定
    - 不明な場合はユーザーに質問

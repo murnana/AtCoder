@@ -38,7 +38,7 @@ Collect the following information from the user (with intelligent defaults when 
    - Example: "Which problems did you solve? (e.g., A, B, C)"
 
 3. **Unsubmitted Code**
-   - Ask if there's any unsubmitted code in `workspaces/csharp/Murnana.AtCoder/Program.cs`
+   - Ask if there's any unsubmitted code in `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`
    - If yes, ask which problem it belongs to and reason (e.g., "C - TLE concern")
 
 4. **Contest Results**
@@ -103,6 +103,10 @@ Create or update `contests/{contest_id}/README.md` following this template:
 
 
 ## 参加後実績
+
+### 言語環境
+* C# 11.0
+* .NET 7.0.7
 
 |                    |                           |
 | -----------------: | :------------------------ |
@@ -239,7 +243,7 @@ WebFetch(
 ### Source Locations
 
 **Workspace (during contest)**:
-- `workspaces/csharp/Murnana.AtCoder/Program.cs` - Current working solution
+- `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs` - Current working solution
 
 **Archive (after contest)**:
 - `contests/{contest_id}/` - Contest-specific directory
