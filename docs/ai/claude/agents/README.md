@@ -45,7 +45,7 @@
 - サンプルケースでのテスト
 - デバッグと最適化
 
-**出力**: `workspaces/csharp/Murnana.AtCoder/Program.cs`
+**出力**: `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`
 
 ---
 

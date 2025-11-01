@@ -2,7 +2,7 @@
 
 ## 概要
 
-`csharp-problem-solver` は、AtCoderの競技プログラミング問題をC#で実装する専門エージェントです。問題分析結果を基に、効率的で正確な解答コードを`workspaces/csharp/Program.cs`に実装します。
+`csharp-problem-solver` は、AtCoderの競技プログラミング問題をC#で実装する専門エージェントです。問題分析結果を基に、効率的で正確な解答コードを`workspaces/csharp-dotnet-7-0-7-aot/Program.cs`に実装します。
 
 ## 目的
 
@@ -64,7 +64,7 @@ workspaces/ai/claude/
 
 #### 3. コード実装
 
-`workspaces/csharp/Murnana.AtCoder/Program.cs`に以下を含む実装:
+`workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`に以下を含む実装:
 
 **XML ドキュメントコメント**:
 ```csharp

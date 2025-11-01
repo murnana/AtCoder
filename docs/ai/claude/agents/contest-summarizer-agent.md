@@ -40,7 +40,7 @@
 - **例**: `A, B` または `A, B, C, D`
 
 #### 3. 未提出コード
-- `workspaces/csharp/Murnana.AtCoder/Program.cs` に解きかけのコードが残っているか
+- `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs` に解きかけのコードが残っているか
 - 残っている場合、どの問題用か、理由は何か（TLE懸念、WA、未完成など）
 - **例**: `C - TLE懸念のため未提出`
 
@@ -73,7 +73,7 @@
 3. **README.md生成/更新**
    - 過去のコンテスト（ABC428, ABC429など）と同じフォーマットで作成
    - 以下のセクションを含む:
-     - 参加後実績（順位、Rating、AC数）
+     - 参加後実績（言語環境、順位、Rating、AC数）
      - 解いた問題（タイトル、URL、解法メモ）
      - 未挑戦・解けなかった問題
 

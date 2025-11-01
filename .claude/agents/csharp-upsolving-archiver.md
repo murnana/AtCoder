@@ -14,7 +14,7 @@ You will move completed C# solutions from the active workspace to the appropriat
 ## Operational Workflow
 
 ### Step 1: Identify the Contest and Problem
-1. Examine `workspaces/csharp/Murnana.AtCoder/Program.cs` to determine:
+1. Examine `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs` to determine:
    - Which contest this solution belongs to (look for problem identifiers like ABC350, ABC351, etc.)
    - Which problem letter (A, B, C, D, E, F, etc.)
    - Read code comments and problem context carefully
@@ -30,7 +30,7 @@ You will move completed C# solutions from the active workspace to the appropriat
    - Problem details are documented in the code's XML comments and README
 
 ### Step 3: Move the Solution
-1. Copy `workspaces/csharp/Murnana.AtCoder/Program.cs` to `contests/{contest-id}/upsolving/{Problem-Letter}.cs`
+1. Copy `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs` to `contests/{contest-id}/upsolving/{Problem-Letter}.cs`
    - Simple naming convention: `C.cs`, `D.cs`, etc.
    - No additional descriptive suffixes needed
 2. Verify the file was copied successfully

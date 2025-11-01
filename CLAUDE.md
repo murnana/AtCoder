@@ -73,7 +73,7 @@ This repository uses specialized Claude Code agents for efficient problem-solvin
 
 **When to use:**
 - After problem analysis is complete
-- To implement solutions in `workspaces/csharp/Murnana.AtCoder/Program.cs`
+- To implement solutions in `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`
 - For debugging and optimizing C# solutions
 
 **Prerequisites**: Analysis files from `atcoder-question-analyzer` should exist in `workspaces/ai/claude/`
@@ -191,14 +191,14 @@ Stage 4: Contest Summary (after contest)
 
 2. **Implementation**: Use `csharp-problem-solver` to implement
    - Reads analysis files from `workspaces/ai/claude/`
-   - Implements in `workspaces/csharp/Murnana.AtCoder/Program.cs`
+   - Implements in `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`
    - Uses SourceExpander for single-file submission via `Combined.csx`
    - All code comments in Japanese for readability
 
 3. **Reference**: Check `contests/` for past solutions
 
 #### Direct Implementation (Alternative)
-- Directly implement in `workspaces/csharp/Murnana.AtCoder/Program.cs`
+- Directly implement in `workspaces/csharp-dotnet-7-0-7-aot/Murnana.AtCoder/Program.cs`
 - Use SourceExpander for single-file submission via `Combined.csx`
 
 ## Language Policy
