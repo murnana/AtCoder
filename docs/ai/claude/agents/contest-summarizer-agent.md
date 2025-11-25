@@ -45,10 +45,11 @@
 - **例**: `C - TLE懸念のため未提出`
 
 #### 4. コンテスト実績
-- **順位**: `7711th / 11184` の形式
-- **Rating変化**: `287 → 280 (-7)` の形式
-- **Rating最高値**: `342 ― 9 級` の形式
-- **コンテスト参加回数**: `34` など
+- **自動取得**: AtCoderから自動的に取得
+  - `https://atcoder.jp/users/murnana/history/share/{contest_id}` から順位、Performance、Rating変化、参加回数を取得
+  - `https://atcoder.jp/users/murnana` からRating最高値を取得
+- **確認**: 取得したデータをユーザーに提示して確認
+- **修正可能**: 必要に応じてユーザーが手動で修正
 
 #### 5. 解法メモ（オプション）
 - 各問題の解き方の簡潔なメモ
@@ -118,9 +119,22 @@
    ↓
 📋 未提出コード有無確認
    ↓
-📋 実績データ収集
-   ↓
 📋 解法メモ収集（オプション）
+```
+
+### Phase 1.5: 成績データ自動取得
+```
+🌐 AtCoderから成績情報を取得
+   ↓
+📊 Contest result: https://atcoder.jp/users/murnana/history/share/{contest_id}
+   → 順位、Performance、Rating変化、参加回数
+   ↓
+📊 User profile: https://atcoder.jp/users/murnana
+   → Rating最高値
+   ↓
+✅ ユーザーに取得データの確認を求める
+   ↓
+🔧 必要に応じてユーザーが修正
 ```
 
 ### Phase 2: ファイル整理
