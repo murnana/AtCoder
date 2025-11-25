@@ -42,15 +42,63 @@ Collect the following information from the user (with intelligent defaults when 
    - If yes, ask which problem it belongs to and reason (e.g., "C - TLE concern")
 
 4. **Contest Results**
-   - Ranking (e.g., "7711th / 11184")
-   - Rating change (e.g., "287 → 280 (-7)")
-   - Highest rating (e.g., "342 ― 9 級")
-   - Contest participation count (e.g., "34")
+   - Automatically fetched from AtCoder (see Phase 1.5)
+   - User confirms or corrects fetched data
 
 5. **Solution Approach Notes** (Optional)
    - Brief notes on how each problem was solved
    - Key insights or algorithms used
    - Keep it concise (1-3 bullet points per problem)
+
+### Phase 1.5: Automatic Performance Data Fetching
+
+After confirming the contest ID, automatically fetch performance metrics from AtCoder:
+
+1. **Fetch Contest-Specific Results**
+   - URL: `https://atcoder.jp/users/murnana/history/share/{contest_id}`
+   - Extract:
+     - 順位 (Rank): "XXXXth / XXXXX"
+     - Performance: numeric value
+     - Rating変化 (Rating change): "old → new (±change)"
+     - コンテスト参加回数 (Contest count): numeric value
+   - WebFetch prompt example:
+     ```
+     Extract all performance metrics from this AtCoder contest result page. Return the following data in this exact format:
+     - Rank: XXXXth / XXXXX
+     - Performance: [number]
+     - Rating: old → new (±change)
+     - Contests: [number]
+     If any data is missing, indicate with 'N/A'.
+     ```
+
+2. **Fetch User Profile for Highest Rating**
+   - URL: `https://atcoder.jp/users/murnana`
+   - Extract:
+     - Rating最高値 (Highest rating): "XXX ― X 級"
+   - WebFetch prompt example:
+     ```
+     Extract the highest rating with grade from this user profile page. Return in this exact format: XXX ― X 級. If not found, return 'N/A'.
+     ```
+
+3. **Fallback Handling**
+   - If WebFetch fails for any URL, ask user to provide the missing data manually
+   - Show which data was successfully fetched and which needs manual input
+   - Example: "順位、Performance、Rating変化を自動取得しました。Rating最高値の取得に失敗したため、手動で入力してください: (例: 342 ― 9 級)"
+
+4. **User Confirmation**
+   - Display fetched data and ask user to confirm accuracy
+   - Allow user to override any automatically fetched values
+   - Example output:
+     ```
+     以下の成績情報をAtCoderから取得しました:
+     - 順位: 8810th / 12,219
+     - Performance: 186
+     - Rating: 294 → 282 (-12)
+     - Rating最高値: 342 ― 9 級
+     - コンテスト参加回数: 36
+
+     この情報は正しいですか？修正が必要な項目があれば教えてください。
+     ```
 
 ### Phase 2: File Organization
 
@@ -224,6 +272,11 @@ Follow these conventions for solution file names:
 - **User Submissions**: `https://atcoder.jp/contests/{contest_id}/submissions?f.User=murnana`
 - **User Results**: `https://atcoder.jp/users/murnana/history/share/{contest_id}`
 
+### Data Fetching URLs
+
+- **Contest Result** (for rank, performance, rating change, contest count): `https://atcoder.jp/users/murnana/history/share/{contest_id}`
+- **User Profile** (for highest rating): `https://atcoder.jp/users/murnana`
+
 ### Problem ID Format
 
 - ABC contests: `abc{number}_{letter}` (e.g., `abc429_a`, `abc429_b`)
@@ -334,14 +387,22 @@ This agent is **strictly for post-contest organization and documentation**. It:
 User: "ABC429のコンテスト後作業をお願いします"
 
 Agent:
-ABC429のコンテストサマリーを作成します。以下の情報を教えてください:
+ABC429のコンテストサマリーを作成します。まず成績情報を自動取得します...
 
+[Fetches data from AtCoder using WebFetch]
+
+以下の成績情報をAtCoderから取得しました:
+- 順位: 7711th / 11184
+- Performance: 250
+- Rating: 287 → 280 (-7)
+- Rating最高値: 342 ― 9 級
+- コンテスト参加回数: 34
+
+この情報は正しいですか？
+
+次に、以下の情報を教えてください:
 1. 解いた問題: (例: A, B)
 2. 未提出のコード: Program.csに残っていますか？その場合、どの問題用ですか？
-3. 順位: (例: 7711th / 11184)
-4. Rating変化: (例: 287 → 280)
-5. Rating最高値: (例: 342 ― 9 級)
-6. コンテスト参加回数: (例: 34)
 
 [User provides information]
 
