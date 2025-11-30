@@ -45,6 +45,13 @@ https://atcoder.jp/contests/abc434/tasks/abc434_c
 
 - `C-unsubmitted.cs`: 解きかけのコード
 
+**Upsolving (2025-11-30):**
+- 高度制約を満たしながら飛行経路が実現可能かを判定する問題
+- 各時点で到達可能な高度範囲 [L, U] を追跡するアプローチで解決
+- 時間計算量: O(N)、空間計算量: O(1)
+- AC submission: https://atcoder.jp/contests/abc434/submissions/71351987 (76ms, 5,800 KiB)
+- `upsolving/C.cs`: 公式解説に基づく実装（詳細な日本語コメント付き）
+
 
 ### D問題以降
 
