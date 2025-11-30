@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using SourceExpander;
 
 internal sealed class Program
@@ -12,21 +13,18 @@ internal sealed class Program
     /// 【解法のポイント】
     /// 高橋君が風船で飛行し、各時刻に高度制約を満たせるかを判定する問題。
     /// 特定の飛行経路を構築するのではなく、各時点で「到達可能な高度範囲 [L, U]」を追跡する。
-    ///
     /// 【アルゴリズム】
     /// 1. 初期状態: 時刻0で高度Hにいるため、実現可能範囲は [L, U] = [H, H]
     /// 2. 各目標 i に対して順番に処理:
-    ///    - 経過時間 delta = t[i] - t[i-1] の間に、高度を delta だけ上下できる
-    ///    - 範囲を拡張: [L - delta, U + delta]
-    ///    - 高度は常に正: L = max(L, 1)
-    ///    - 目標制約 [l[i], u[i]] を適用: L = max(L, l[i]), U = min(U, u[i])
-    ///    - 実現可能性チェック: L > U なら不可能
+    /// - 経過時間 delta = t[i] - t[i-1] の間に、高度を delta だけ上下できる
+    /// - 範囲を拡張: [L - delta, U + delta]
+    /// - 高度は常に正: L = max(L, 1)
+    /// - 目標制約 [l[i], u[i]] を適用: L = max(L, l[i]), U = min(U, u[i])
+    /// - 実現可能性チェック: L > U なら不可能
     /// 3. すべての目標を満たせたら "Yes"、途中で範囲が空になったら "No"
-    ///
     /// 【計算量】
     /// - 時間計算量: O(N) (各目標を1回ずつ処理)
     /// - 空間計算量: O(1) (範囲 [L, U] のみ保持)
-    ///
     /// 【実装の利点】
     /// - 単純な区間追跡で効率的に解ける
     /// - 経路を明示的に構築する必要がない（状態空間の縮約）
@@ -41,38 +39,38 @@ internal sealed class Program
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         // 【入力読み込み】
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        var T = int.Parse(Console.ReadLine()!); // テストケース数
+        var T = int.Parse(s: Console.ReadLine()!); // テストケース数
 
-        for (int testCase = 0; testCase < T; testCase++)
+        for(var testCase = 0 ; testCase < T ; testCase++)
         {
-            var firstLine = Console.ReadLine()!.Split();
-            var N = int.Parse(firstLine[0]); // 目標の数
-            var H = long.Parse(firstLine[1]); // 初期高度
+            var firstLine = Console.ReadLine()!.Split(' ');
+            var N         = int.Parse(s: firstLine[0]); // 目標の数
+            var H         = int.Parse(s: firstLine[1]); // 初期高度
 
-            // Console.WriteLine($"Test Case {testCase + 1}: N={N}, H={H}");
+            Debug.WriteLine($"Test Case {testCase + 1}: N={N}, H={H}");
 
             // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             // 【実現可能範囲の初期化】
             // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             // 時刻0では高度Hにいる → 実現可能範囲は [H, H]
-            long L = H; // 実現可能な最小高度
-            long U = H; // 実現可能な最大高度
-            long prevTime = 0; // 前回の時刻
-            bool possible = true; // すべての目標を達成可能か
+            var L        = H;    // 実現可能な最小高度
+            var U        = H;    // 実現可能な最大高度
+            var prevTime = 0;    // 前回の時刻
+            var possible = true; // すべての目標を達成可能か
 
             // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             // 【各目標を順番に処理】
             // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            for (int i = 0; i < N; i++)
+            for(var i = 0 ; i < N ; i++)
             {
-                var goalLine = Console.ReadLine()!.Split();
-                var t = long.Parse(goalLine[0]); // 目標時刻
-                var l = long.Parse(goalLine[1]); // 目標高度下限
-                var u = long.Parse(goalLine[2]); // 目標高度上限
+                var goalLine = Console.ReadLine()!.Split(' ');
+                var t        = int.Parse(s: goalLine[0]); // 目標時刻
+                var l        = int.Parse(s: goalLine[1]); // 目標高度下限
+                var u        = int.Parse(s: goalLine[2]); // 目標高度上限
 
                 // 【ステップ1: 経過時間の計算】
                 // 前回の時刻から現在の目標時刻までの経過時間
-                long delta = t - prevTime;
+                var delta = t - prevTime;
 
                 // 【ステップ2: 移動可能範囲の拡張】
                 // delta 秒間で、高度を delta だけ上下できる
@@ -82,26 +80,27 @@ internal sealed class Program
 
                 // 【ステップ3: 高度の正制約を適用】
                 // 高度は常に1以上でなければならない
-                L = Math.Max(L, 1);
+                L = Math.Max(val1: L, val2: 1);
 
                 // 【ステップ4: 目標制約 [l, u] を適用】
                 // 現在の実現可能範囲 [L, U] と目標範囲 [l, u] の共通部分を取る
-                L = Math.Max(L, l);
-                U = Math.Min(U, u);
+                L = Math.Max(val1: L, val2: l);
+                U = Math.Min(val1: U, val2: u);
 
                 // Debug output
-                // Console.WriteLine($"Goal {i+1}: t={t}, [{l}, {u}], After: [{L}, {U}]");
+                Debug.WriteLine($"Goal {i+1}: t={t}, [{l}, {u}], After: [{L}, {U}]");
 
                 // 【ステップ5: 実現可能性のチェック】
                 // L > U の場合、範囲が空 → 目標を達成不可能
-                if (L > U)
+                if(L > U)
                 {
                     possible = false;
                     // 残りの目標を読み飛ばす
-                    for (int j = i + 1; j < N; j++)
+                    for(var j = i + 1 ; j < N ; j++)
                     {
                         Console.ReadLine();
                     }
+
                     break;
                 }
 
@@ -112,7 +111,7 @@ internal sealed class Program
             // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             // 【結果の出力】
             // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            Console.WriteLine(possible ? "Yes" : "No");
+            Console.WriteLine(value: possible ? "Yes" : "No");
         }
     }
 }
