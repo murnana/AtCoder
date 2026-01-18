@@ -43,6 +43,13 @@ https://atcoder.jp/contests/abc441/tasks/abc441_b
 
 https://atcoder.jp/contests/abc441/tasks/abc441_c
 
+**Upsolving (2026-01-18):**
+- 累積和と貪欲法を用いた解法
+- 容量の大きいカップから順に選択し、最悪ケースでの保証される日本酒量を計算
+- 時間計算量: O(N log N)（ソート）、空間計算量: O(N)
+- AC submission: https://atcoder.jp/contests/abc441/submissions/72576193
+- `upsolving/C.cs`: 詳細なアルゴリズム解説とステップごとのデバッグ出力を含む実装
+
 
 ### D - Paid Walk
 
